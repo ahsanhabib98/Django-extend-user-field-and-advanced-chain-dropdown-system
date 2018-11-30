@@ -1,0 +1,16 @@
+{% if sub %}
+	{% for sub in sub %}
+		<option value="">---------</option>
+		<option value="{{ sub.pk }}">{{ sub.name }}</option>
+	{% endfor %}
+{% elif uni %}
+	{% for uni in uni %}
+		<option value="">---------</option>
+		<option value="{{ uni.pk }}">{{ uni.name }}</option>
+	{% endfor %}
+{% elif vil %}
+	{% for vil in vil %}
+		<option value="">---------</option>
+		<option value="{{ vil.pk }}">{{ vil.name }}</option>
+	{% endfor %}
+{% endif %}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+	<form method="POST" enctype="multipart/form-data" id="userForm" data-sub-url="{% url 'ajax_load_subdistrict' %}" data-uni-url="{% url 'ajax_load_union' %}" data-vil-url="{% url 'ajax_load_village' %}" novalidate>
+
+	{% csrf_token %}
+	  {{ profile_form.as_p }}
+	  {{ user_form.as_p }}
+	  <button type="submit">Save</button>
+			
+	</form>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_district").change(function () {
+      var url = $("#userForm").attr("data-sub-url");  // get the url of the `load_cities` view
+      var districtId = $(this).val();  // get the selected country ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'district': districtId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_subdistrict").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+
+    $("#id_subdistrict").change(function () {
+      var url = $("#userForm").attr("data-uni-url");  // get the url of the `load_cities` view
+      var subdistrictId = $(this).val();  // get the selected country ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'subdistrict': subdistrictId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_union").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+
+    $("#id_union").change(function () {
+      var url = $("#userForm").attr("data-vil-url");  // get the url of the `load_cities` view
+      var unionId = $(this).val();  // get the selected country ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'union': unionId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_village").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+  </script>
+
+</body>
+</html>
