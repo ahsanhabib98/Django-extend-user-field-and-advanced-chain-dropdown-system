@@ -42,7 +42,7 @@ pika==0.11.2
 Pillow==5.1.0
 psycopg2==2.7.5
 PyHamcrest==1.9.0
-PyJWT==1.6.1
+PyJWT==2.4.0
 pypiwin32==223
 PySocks==1.6.8
 pytz==2017.3
