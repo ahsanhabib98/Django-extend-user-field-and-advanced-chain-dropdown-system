@@ -7,7 +7,7 @@ autobahn==18.10.1
 Automat==0.7.0
 billiard==3.5.0.3
 celery==4.1.0
-certifi==2018.4.16
+certifi==2022.12.7
 channels==2.1.5
 channels-redis==2.3.1
 chardet==3.0.4
